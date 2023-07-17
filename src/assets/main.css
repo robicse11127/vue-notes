@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: 'Poppins', sans-serif;
+	font-size: 1rem;
+	line-height: 28px;
+}
+.rs__notes-wrapper {
+	width: 600px;
+	max-width: 600px;
+	height: 600px;
+	margin: 100px auto;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	border-radius: 4px;
+	overflow: hidden;
+}
+.rs__content-wrapper {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+.rs__top-toolbar {
+	padding: 10px 20px;
+	background-color: #6528F7;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.rs__action-icons {
+	display: flex;
+	align-items: center;
+	width: 36%;
+}
+.rs__action-icon {
+	margin-right: 5px;
+	cursor: pointer;
+	transition: all 0.1s ease-in-out;
+}
+.rs__action-icon:hover {
+	transform: scale(1.1);
+}
+.rs__notes-sidebar {
+	width: 30%;
+	border-right: 1px solid #dedede;
+	padding: 15px 15px 100px 15px;
+	background-color:#E9B384;
+	overflow-y: scroll;
+}
+.rs__note-list {
+	padding: 0;
+	margin: 0 0 20px 0;
+	list-style: none;
+}
+.rs__note-list li {
+	position: relative;
+	width: 100%;
+	border-bottom: 1px solid rgba( 0,0,0,0.05 );
+	padding: 3px 0;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+.rs__note-list li::before {
+	content: "";
+	position: absolute;
+	width: 6px;
+	height: 100%;
+	background-color: #6528F7;
+	top: 0;
+	left: -15px;
+	z-index: 1;
+	transform: translateX(-20px);
+	transition: all 0.3s ease-in-out;
+}
+
+.rs__note-list li:hover::before  {
+	transform: translateX(0);
+}
+.rs__note-list li p {
+	font-size: 0.75rem;
+	line-height: 20px;
+}
+.rs__notes-content {
+	padding: 15px 20px;
+	width: 70%;
+	background-color: #F4F2DE;
+	overflow-y: scroll;
+}
+.rs__input-title {
+	width: 100%;
+	border: 0;
+	outline: 0;
+	height: 35px;
+	padding: 5px 10px;
+	font-size: 1rem;
+	font-weight: 600;
+}
+.rs__sidebar-title {
+	border-bottom: 1px solid rgba(0,0,0,0.05);
+	display: flex;
+	align-items: center;
+}
+.rs__sidebar-title-pinned-icon,
+.rs__sidebar-title-note-icon {
+	margin-right: 5px;
+}
+.rs__sidebar-title-pinned-icon {
+	transform: rotate(-45deg);
+}
+.rs__justify-end {
+	justify-content: flex-end;
+}
+.rs__toolbar-title {
+	width: 30%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
