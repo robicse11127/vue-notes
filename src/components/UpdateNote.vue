@@ -1,6 +1,6 @@
 <template>
 	<div class="rs__notes-content">
-		<form @submit.prevent="handleForm">
+		<form @submit.prevent="handleUpdateForm">
 			<input
 				type="text"
 				class="rs__input-title"
@@ -24,33 +24,31 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import contenteditable from 'vue-contenteditable';
-import { v4 as uuidv4 } from 'uuid';
 import { useNoteStore } from '@/stores/NoteStore';
 
 const noteStore = useNoteStore();
 const title = ref('');
 const content = ref('');
 
-const handleForm = (e) => {
+// Update form with latest values.
+noteStore.currentNote.map( note => {
+    title.value = note.title;
+    content.value = note.content;
+} )
+
+
+const handleUpdateForm = (e) => {
 	let insertId = noteStore.lastNoteID;
 
-	if ( 0 < title.value.length && '' === insertId ) {
-		insertId = uuidv4();
-		noteStore.addNote({
+	if ( 0 < title.value.length  ) {
+		noteStore.updateNote({
 			id: insertId,
 			title: title.value,
 			content: content.value,
 			timestamp: Date.now(),
-			pinned: false,
-			lastOpened: true
 		});
-
-		// Reset form.
-		title.value = '';
-		content.value = '';
 	}
 }
-
 </script>

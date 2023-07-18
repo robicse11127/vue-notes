@@ -10,13 +10,15 @@ body {
 	line-height: 28px;
 }
 .rs__notes-wrapper {
-	width: 600px;
-	max-width: 600px;
+	display: flex;
+	flex-flow: column;
+	width: 680px;
 	height: 600px;
 	margin: 100px auto;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	border-radius: 4px;
 	overflow: hidden;
+	position: relative;
 }
 .rs__content-wrapper {
 	display: flex;
@@ -63,6 +65,9 @@ body {
 	padding: 3px 0;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 .rs__note-list li::before {
 	content: "";
@@ -83,12 +88,29 @@ body {
 .rs__note-list li p {
 	font-size: 0.75rem;
 	line-height: 20px;
+	width: 80%;
+}
+.rs__note-list-icon {
+	font-size: 1rem;
+	cursor: pointer;
+	display: none;
+}
+.rs__note-list li:hover .rs__note-list-icon {
+	display: block;
 }
 .rs__notes-content {
 	padding: 15px 20px;
 	width: 70%;
 	background-color: #F4F2DE;
 	overflow-y: scroll;
+	font-size: .825rem;
+	line-height: 1.25rem;
+}
+.rs__notes-content form {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-flow: column;
 }
 .rs__input-title {
 	width: 100%;
@@ -124,11 +146,10 @@ body {
 .rs__content-editable {
 	width: 100%;
 	height: 100%;
-	padding: 15px 0;
 	outline: 0;
 }
 .rs__form-save-btn {
-	padding: 10px 15px;
+	padding: 10px;
 	font-family: inherit;
 	font-size: 0.825rem;
 	font-weight: 500;
@@ -139,7 +160,24 @@ body {
 	color: #fff;
 	cursor: pointer;
 	transition: all 0.3s ease-in;
+	position: absolute;
+	right: 15px;
+	bottom: 15px;
+	z-index: 1;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 .rs__form-save-btn:hover {
 	background-color: #17594A;
+}
+.rs__view-note-details {
+	font-size: 0.825rem;
+	line-height: 1.25rem;
+}
+.rs__view-note-title {
+	margin-bottom: 15px;
+	text-transform: capitalize;
+	font-size: 1rem;
+	line-height: 1.5rem;
 }

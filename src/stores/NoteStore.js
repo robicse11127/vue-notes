@@ -3,12 +3,12 @@ import { ref } from 'vue';
 
 export const useNoteStore = defineStore( 'noteStore', {
 	state: () => ({
-		notes: [
-			{ id: Date.now(), title: 'A breif story of time', content: '', timestamp: Date.now(), pinned: true, lastOpened: true },
-			{ id: Date.now(), title: 'Some important links', content: '', timestamp: Date.now(), pinned: false, lastOpened: false },
-			{ id: Date.now(), title: 'A list of tutorials to learn', content: '', timestamp: Date.now(), pinned: false, lastOpened: false },
-		],
-		lastNoteID: ''
+		notes: [],
+		lastNoteID: '',
+		currentNote: ref(''),
+		showEdit: ref(false),
+		showNote: ref(false),
+		showAdd: ref(true)
 	}),
 	getters: {
 		pinnedNotes: ( state  ) => {
@@ -19,15 +19,70 @@ export const useNoteStore = defineStore( 'noteStore', {
 			return state.notes;
 		},
 
-		currentNote: ( state ) => {
-			return state.notes.filter( note => note.id === state.lastNoteID );
-		}
 	},
 	actions: {
 		addNote( note ) {
 			const newNotesArr = [ note, ...this.notes ];
 			this.notes = newNotesArr;
-			this.lastNoteID = note.id;
-		}
+		},
+
+		updateNote( note ) {
+			const updateNote = this.notes.map( item => {
+				if ( item.id === this.lastNoteID ) {
+					item.title = note.title;
+					item.content = note.content;
+				}
+				return item;
+			} );
+			this.notes = updateNote;
+		},
+
+		deleteNote( id ) {
+			const isConfirmed = confirm( 'Are you sure?' );
+			if ( isConfirmed ) {
+				const filteredNotes = this.notes.filter( item => item.id !== id );
+				this.notes = filteredNotes;
+				this.showAddForm();
+			}
+		},
+
+		viewSelectedNote( id ) {
+			this.updateCurrentNote(id);
+			this.lastNoteID = id;
+			this.showNoteDetails();
+		},
+
+		showUpdateForm( id ) {
+			this.updateCurrentNote(id);
+			this.lastNoteID = id;
+			this.showEditForm();
+		},
+
+		resetLastNoteID() {
+			this.lastNoteID = '';
+		},
+
+		updateCurrentNote(id) {
+			const currentNote = this.notes.filter( note => note.id == id );
+			this.currentNote = currentNote;
+		},
+
+		showAddForm() {
+			this.showAdd = true;
+    		this.showEdit = false;
+    		this.showNote = false;
+		},
+
+		showEditForm() {
+			this.showAdd = false;
+    		this.showEdit = true;
+    		this.showNote = false;
+		},
+
+		showNoteDetails() {
+			this.showAdd = false;
+    		this.showEdit = false;
+    		this.showNote = true;
+		},
 	}
 })
