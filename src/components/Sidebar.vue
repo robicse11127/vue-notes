@@ -6,7 +6,7 @@
 		</h4>
 		<ul class="rs__note-list rs__pinned-note-list">
 			<li v-for="pinned in noteStore.pinnedNotes" :key="pinned.id">
-				<p>{{ pinned.title }}</p>
+				<p :id="pinned.id" @click="viewNote">{{ pinned.title.substring( 0, 20 ) }} {{ pinned.title.length > 20 ? "..." : "" }} </p>
 			</li>
 		</ul>
 		<h4 class="rs__sidebar-title">
@@ -15,7 +15,8 @@
 		</h4>
 		<ul class="rs__note-list">
 			<li v-for="note in noteStore.allNotes" :key="note.id">
-				<p :id="note.id" @click="viewNote">{{ note.title.substring( 0, 20 ) }} {{ note.title.length > 20 ? "..." : "" }} </p> <span @click="markAsPinned" class="rs__note-list-icon material-symbols-sharp">push_pin</span>
+				<p :id="note.id" @click="viewNote">{{ note.title.substring( 0, 20 ) }} {{ note.title.length > 20 ? "..." : "" }} </p>
+				<span :id="note.id" @click="markAsPinned" class="rs__note-list-icon material-symbols-sharp">push_pin</span>
 			</li>
 		</ul>
 	</div>
@@ -26,7 +27,7 @@ import { useNoteStore } from '../stores/NoteStore'
 const noteStore = useNoteStore();
 
 const markAsPinned = (e) => {
-	console.log('pinned');
+	noteStore.markedAsPinned( e.target.id );
 }
 
 const viewNote = (e) => {

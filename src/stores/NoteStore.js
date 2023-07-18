@@ -67,6 +67,20 @@ export const useNoteStore = defineStore( 'noteStore', {
 			this.currentNote = currentNote;
 		},
 
+		markedAsPinned( id ) {
+			const updatedNotes = this.notes.map( item => {
+				if ( id === item.id ) {
+					console.log(item);
+					item.pinned = true;
+
+					return item;
+				}
+				return item;
+			} );
+
+			this.notes = updatedNotes;
+		},
+
 		showAddForm() {
 			this.showAdd = true;
     		this.showEdit = false;
