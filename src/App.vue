@@ -8,7 +8,6 @@
 			<ViewNote v-if="noteStore.showNote" />
 		</div>
 	</div>
-	{{noteStore.notes}}
 </template>
 
 <script setup>

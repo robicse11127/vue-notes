@@ -8,7 +8,10 @@ export const useNoteStore = defineStore( 'noteStore', {
 		currentNote: ref(''),
 		showEdit: ref(false),
 		showNote: ref(false),
-		showAdd: ref(true)
+		showAdd: ref(true),
+		searchNoteTitle: ref(''),
+		listView: ref(true),
+		gridView: ref(false)
 	}),
 	getters: {
 		pinnedNotes: ( state  ) => {
@@ -18,6 +21,11 @@ export const useNoteStore = defineStore( 'noteStore', {
 		allNotes: ( state ) => {
 			return state.notes;
 		},
+
+		searchNote: ( state ) => {
+			if ( '' === state.searchNoteTitle ) return [];
+			return state.notes.filter( note => note.title.toLowerCase().includes( state.searchNoteTitle.toLowerCase() ) );
+		}
 
 	},
 	actions: {
@@ -42,6 +50,7 @@ export const useNoteStore = defineStore( 'noteStore', {
 			if ( isConfirmed ) {
 				const filteredNotes = this.notes.filter( item => item.id !== id );
 				this.notes = filteredNotes;
+				this.lastNoteID = '';
 				this.showAddForm();
 			}
 		},
@@ -70,9 +79,19 @@ export const useNoteStore = defineStore( 'noteStore', {
 		markedAsPinned( id ) {
 			const updatedNotes = this.notes.map( item => {
 				if ( id === item.id ) {
-					console.log(item);
 					item.pinned = true;
+					return item;
+				}
+				return item;
+			} );
 
+			this.notes = updatedNotes;
+		},
+
+		markedAsUnPinned( id ) {
+			const updatedNotes = this.notes.map( item => {
+				if ( id === item.id ) {
+					item.pinned = false;
 					return item;
 				}
 				return item;

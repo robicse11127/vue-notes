@@ -181,3 +181,33 @@ body {
 	font-size: 1rem;
 	line-height: 1.5rem;
 }
+.rs__top-toolbar-search {
+	outline: 0;
+	border: 0;
+	width: 300px;
+	height: 30px;
+	border-radius: 4px;
+	margin-right: 4px;
+	padding: 0 10px;
+	font-family: inherit;
+	transform: translateY(-100px);
+	transition: all 0.3s ease-in;
+}
+.rs__top-toolbar-search-show {
+	transform: translateY(0);
+}
+li.rs__note-list-nothing-found {
+    text-align: center;
+    width: 100%;
+    display: flex;
+	padding-top: 30px;
+	border-bottom: 0;
+}
+li.rs__note-list-nothing-found span {
+	font-size: 3rem;
+	line-height: 3rem;
+	opacity: 0.3;
+}
+li.rs__note-list-nothing-found:hover::before {
+	display: none;
+}
