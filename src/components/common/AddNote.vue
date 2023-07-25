@@ -51,7 +51,7 @@ const handleForm = (e) => {
 		title.value = '';
 		content.value = '';
 	} else {
-		alert( 'Title can not be blank' );
+		alert( noteStore.notice.blankTitleNotAllowed );
 	}
 }
 

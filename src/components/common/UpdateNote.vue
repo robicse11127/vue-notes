@@ -50,7 +50,7 @@ const handleUpdateForm = (e) => {
 			timestamp: Date.now(),
 		});
 	} else {
-		alert( 'Title can not be blank!' );
+		alert( noteStore.notice.blankTitleNotAllowed );
 	}
 }
 </script>

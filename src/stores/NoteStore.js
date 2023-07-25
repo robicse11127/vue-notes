@@ -11,7 +11,11 @@ export const useNoteStore = defineStore( 'noteStore', {
 		showAdd: ref(true),
 		searchNoteTitle: ref(''),
 		listView: ref(true),
-		gridView: ref(false)
+		gridView: ref(false),
+		notice: {
+			'blankTitleNotAllowed': 'Title can not be blank',
+			'noNotesFound': 'No notes added yet!'
+		}
 	}),
 	getters: {
 		pinnedNotes: ( state  ) => {
