@@ -117,5 +117,23 @@ export const useNoteStore = defineStore( 'noteStore', {
     		this.showEdit = false;
     		this.showNote = true;
 		},
+
+		showListView() {
+			this.listView = true;
+			this.gridView = false;
+			this.showAdd = true;
+			this.showEdit = false;
+			this.showNote = false;
+			this.lastNoteID = '';
+		},
+
+		showGridView() {
+			this.listView = false;
+			this.gridView = true;
+			this.showAdd = false;
+			this.showEdit = false;
+			this.showNote = false;
+			this.lastNoteID = '';
+		}
 	}
 })

@@ -211,3 +211,88 @@ li.rs__note-list-nothing-found span {
 li.rs__note-list-nothing-found:hover::before {
 	display: none;
 }
+.rs__notes-content-grid {
+	padding: 15px 20px;
+	width: 100%;
+	background-color: #F4F2DE;
+	overflow-y: scroll;
+	font-size: .825rem;
+	line-height: 1.25rem;
+}
+.rs__notes-content-grid {
+    display: flex;
+    width: 100%;
+    flex-flow: column;
+}
+.rs__notes-content-all-notes {
+	display: flex;
+	width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+	flex-flow: column;
+}
+.rs__notes-contet-grid-card-wrapper {
+	display: flex;
+	width: 100%;
+	height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    column-gap: 10px;
+}
+.rs__note-card {
+    width: calc(25% - 8px);
+    padding: 7px 8px;
+    background-color: #E9B384;
+    margin-bottom: 10px;
+	border-radius: 4px;
+	transition: all 0.3s ease-in-out;
+	position: relative;
+	z-index: 0;
+}
+.rs__note-card:hover {
+	cursor: pointer;
+	background-color: #F4E0B9;
+}
+h4.rs__note-card-title {
+    font-size: .75rem;
+    margin-bottom: 10px;
+}
+.rs__notes-content-grid .rs__notes-content {
+	width: 100%;
+}
+.rs__note-grid-icon {
+	position: absolute;
+	top: 10px;
+	right: 5px;
+	font-size: 1rem;
+	z-index: 10;
+	display: none;
+}
+.rs__note-card:hover .rs__note-grid-icon {
+	display: block;
+}
+.rs__note-grid-nothing-found {
+	text-align: center;
+    width: 200px;
+    display: flex;
+    padding-top: 30px;
+    border-bottom: 0;
+    font-size: 4rem;
+    margin: 0 auto;
+    line-height: 4rem;
+    opacity: 0.5;
+    font-weight: 700;
+}
+h4.rs__notes-content-grid-title {
+    display: flex;
+	width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+	border-bottom: 1px solid rgba( 0,0,0,0.05 );
+	margin-bottom: 10px;
+}
+.rs__notes-content-grid-title-icon {
+	margin-right: 5px;
+}

@@ -11,7 +11,7 @@
 				:no-html="true"
 			/>
             <button
-              @click="editNote(note.id)"
+              @click="noteStore.showUpdateForm(note.id)"
               className="rs__form-save-btn"><span
               className="material-symbols-sharp">edit</span></button>
         </div>
@@ -26,8 +26,4 @@ import contenteditable from 'vue-contenteditable';
 const noteStore = useNoteStore();
 const title = ref('');
 const content = ref('');
-
-const editNote = (id) => {
-    noteStore.showUpdateForm(id);
-}
 </script>

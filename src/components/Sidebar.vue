@@ -6,8 +6,10 @@
 				Serach Result
 			</h4>
 			<ul className="rs__note-list rs__pinned-note-list">
-				<li v-for="search in noteStore.searchNote" :key="search.id">
-					<p :id="search.id" @click="viewNote">{{ search.title.substring( 0, 20 ) }} {{ search.title.length > 20 ? "..." : "" }} </p>
+				<li v-for="note in noteStore.searchNote" :key="note.id">
+					<p @click="noteStore.viewSelectedNote( note.id )">{{ note.title.substring( 0, 20 ) }} {{ note.title.length > 20 ? "..." : "" }} </p>
+					<span v-if="note.pinned" @click="noteStore.markedAsUnPinned( note.id )"  className="rs__note-list-icon material-symbols-sharp">do_not_disturb_on</span>
+					<span v-if="!note.pinned" @click="noteStore.markedAsPinned( note.id )" className="rs__note-list-icon material-symbols-sharp">push_pin</span>
 				</li>
 			</ul>
 		</div>
@@ -17,9 +19,9 @@
 				Pinned Notes
 			</h4>
 			<ul className="rs__note-list rs__pinned-note-list">
-				<li v-for="pinned in noteStore.pinnedNotes" :key="pinned.id">
-					<p :id="pinned.id" @click="viewNote">{{ pinned.title.substring( 0, 20 ) }} {{ pinned.title.length > 20 ? "..." : "" }} </p>
-					<span :id="pinned.id" @click="markAsUnPinned"  className="rs__note-list-icon material-symbols-sharp">do_not_disturb_on</span>
+				<li v-for="note in noteStore.pinnedNotes" :key="note.id">
+					<p :id="note.id" @click="noteStore.viewSelectedNote( note.id )">{{ note.title.substring( 0, 20 ) }} {{ note.title.length > 20 ? "..." : "" }} </p>
+					<span @click="noteStore.markedAsUnPinned( note.id )" className="rs__note-list-icon material-symbols-sharp">do_not_disturb_on</span>
 				</li>
 			</ul>
 		</div>
@@ -29,8 +31,9 @@
 		</h4>
 		<ul className="rs__note-list">
 			<li v-for="note in noteStore.allNotes" :key="note.id">
-				<p :id="note.id" @click="viewNote">{{ note.title.substring( 0, 20 ) }} {{ note.title.length > 20 ? "..." : "" }} </p>
-				<span :id="note.id" @click="markAsPinned" className="rs__note-list-icon material-symbols-sharp">push_pin</span>
+				<p :id="note.id" @click="noteStore.viewSelectedNote( note.id )">{{ note.title.substring( 0, 20 ) }} {{ note.title.length > 20 ? "..." : "" }} </p>
+				<span v-if="note.pinned" @click="noteStore.markedAsUnPinned( note.id )"  className="rs__note-list-icon material-symbols-sharp">do_not_disturb_on</span>
+				<span v-if="!note.pinned" @click="noteStore.markedAsPinned( note.id )" className="rs__note-list-icon material-symbols-sharp">push_pin</span>
 			</li>
 			<li
 				v-if="1 > noteStore.allNotes.length"
@@ -42,17 +45,4 @@
 <script setup>
 import { useNoteStore } from '../stores/NoteStore'
 const noteStore = useNoteStore();
-
-const markAsPinned = (e) => {
-	noteStore.markedAsPinned( e.target.id );
-}
-
-const markAsUnPinned = (e) => {
-	noteStore.markedAsUnPinned( e.target.id );
-}
-
-const viewNote = (e) => {
-	noteStore.viewSelectedNote( e.target.id );
-}
-
 </script>

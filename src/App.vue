@@ -2,20 +2,16 @@
 	<div class="rs__notes-wrapper">
 		<Toolbar />
 		<div class="rs__content-wrapper">
-			<Sidebar/>
-			<AddNote v-if="noteStore.showAdd" />
-			<UpdateNote v-if="noteStore.showEdit" />
-			<ViewNote v-if="noteStore.showNote" />
+			<ListView v-if="noteStore.listView"/>
+			<GridView v-if="noteStore.gridView"/>
 		</div>
 	</div>
 </template>
 
 <script setup>
 import Toolbar from '@/components/Toolbar.vue';
-import Sidebar from '@/components/Sidebar.vue';
-import AddNote from '@/components/AddNote.vue';
-import UpdateNote from '@/components/UpdateNote.vue';
-import ViewNote from '@/components/ViewNote.vue';
+import ListView from '@/components/ListView.vue';
+import GridView from '@/components/GridView.vue';
 
 import { useNoteStore } from '@/stores/NoteStore';
 
