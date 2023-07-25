@@ -43,6 +43,6 @@
 </template>
 
 <script setup>
-import { useNoteStore } from '../stores/NoteStore'
+import { useNoteStore } from '@/stores/NoteStore'
 const noteStore = useNoteStore();
 </script>

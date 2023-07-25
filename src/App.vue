@@ -9,9 +9,9 @@
 </template>
 
 <script setup>
-import Toolbar from '@/components/Toolbar.vue';
-import ListView from '@/components/ListView.vue';
-import GridView from '@/components/GridView.vue';
+import Toolbar from '@/components/common/Toolbar.vue';
+import ListView from '@/components/list/ListView.vue';
+import GridView from '@/components/grid/GridView.vue';
 
 import { useNoteStore } from '@/stores/NoteStore';
 

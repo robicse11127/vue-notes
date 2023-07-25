@@ -6,10 +6,10 @@
 </template>
 
 <script setup>
-import Sidebar from '@/components/Sidebar.vue';
-import AddNote from '@/components/AddNote.vue';
-import UpdateNote from '@/components/UpdateNote.vue';
-import ViewNote from '@/components/ViewNote.vue';
+import Sidebar from '@/components/list/Sidebar.vue';
+import AddNote from '@/components/common/AddNote.vue';
+import UpdateNote from '@/components/common/UpdateNote.vue';
+import ViewNote from '@/components/common/ViewNote.vue';
 
 import { useNoteStore } from '@/stores/NoteStore';
 

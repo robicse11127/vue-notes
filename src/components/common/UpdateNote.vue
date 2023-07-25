@@ -49,6 +49,8 @@ const handleUpdateForm = (e) => {
 			content: content.value,
 			timestamp: Date.now(),
 		});
+	} else {
+		alert( 'Title can not be blank!' );
 	}
 }
 </script>

@@ -50,6 +50,8 @@ const handleForm = (e) => {
 		// Reset form.
 		title.value = '';
 		content.value = '';
+	} else {
+		alert( 'Title can not be blank' );
 	}
 }
 

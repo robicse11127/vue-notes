@@ -261,6 +261,7 @@ h4.rs__note-card-title {
 }
 .rs__notes-content-grid .rs__notes-content {
 	width: 100%;
+	height: 100%;
 }
 .rs__note-grid-icon {
 	position: absolute;
